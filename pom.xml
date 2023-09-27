@@ -6,30 +6,30 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <exec executable="javac">
-                                    <arg value="-h"/>
-                                    <arg value="src/main/native/include"/>
-                                    <arg value="-d"/>
-                                    <arg value="target/classes"/>
-                                    <arg value="src/main/java/Main.java"/>
-                                </exec>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-antrun-plugin</artifactId>-->
+<!--                <version>1.8</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>generate-sources</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>run</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <target>-->
+<!--                                <exec executable="javac">-->
+<!--                                    <arg value="-h"/>-->
+<!--                                    <arg value="src/main/native/include"/>-->
+<!--                                    <arg value="-d"/>-->
+<!--                                    <arg value="target/classes"/>-->
+<!--                                    <arg value="src/main/java/*.java"/>-->
+<!--                                </exec>-->
+<!--                            </target>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -37,6 +37,10 @@
                 <configuration>
                     <source>1.8</source>  <!-- or 11, or another version you are targeting -->
                     <target>1.8</target>  <!-- or 11, or another version you are targeting -->
+                    <compilerArgs>
+                        <arg>-h</arg>
+                        <arg>src/main/native/include</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
